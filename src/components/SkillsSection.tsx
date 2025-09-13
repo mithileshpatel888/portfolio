@@ -40,12 +40,11 @@ const SkillsSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
-          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
     );
 
     if (sectionRef.current) {
@@ -55,7 +54,7 @@ const SkillsSection = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [isVisible]);
 
   const filteredSkills = activeTab === 'all' 
     ? skills 

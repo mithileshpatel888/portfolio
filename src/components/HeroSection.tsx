@@ -3,14 +3,27 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ThreeScene from './ThreeScene';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const fullText = "Hi, I'm Mithilesh Patel";
 
   useEffect(() => {
     // Trigger animation after component mounts
     setIsVisible(true);
-  }, []);
+
+    // Typing animation for the name
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText]);
 
   return (
     <section 
@@ -22,7 +35,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className={`space-y-6 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              <span className="block">Hi, I'm Mithilesh Patel</span>
+              <span className="block">{displayedText}<span className="animate-pulse">|</span></span>
               <span className="block mt-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 MERN Stack Developer
               </span>
@@ -86,18 +99,10 @@ const HeroSection = () => {
             </div>
           </div>
           
-          {/* Image/Illustration */}
+          {/* 3D Animation */}
           <div className={`flex justify-center ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-10'}`}>
             <div className="relative w-full max-w-md aspect-square">
-              {/* Placeholder for profile image or illustration */}
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                <span className="text-6xl">👨‍💻</span>
-              </div>
-              
-              {/* Floating elements for visual interest */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 -right-8 w-12 h-12 bg-accent/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <ThreeScene />
             </div>
           </div>
         </div>

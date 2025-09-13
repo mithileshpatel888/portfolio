@@ -5,16 +5,17 @@ import { useEffect, useRef, useState } from 'react';
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
-          observer.disconnect();
+          setHasAnimated(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
     );
 
     if (sectionRef.current) {
@@ -24,7 +25,7 @@ const AboutSection = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <section 
