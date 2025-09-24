@@ -61,10 +61,10 @@ const SkillsSection = () => {
     : skills.filter(skill => skill.category === activeTab);
 
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       ref={sectionRef}
-      className="py-20 bg-background/50"
+      className="pt-[var(--header-height)] py-20 bg-background/50"
     >
       <div className="container mx-auto px-4">
         <h2 className={`text-3xl md:text-4xl font-bold mb-8 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>

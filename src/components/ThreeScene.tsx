@@ -2,12 +2,14 @@
 
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
+  const controlsRef = useRef<OrbitControls | null>(null);
   const animationIdRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -36,6 +38,12 @@ const ThreeScene = () => {
     rendererRef.current = renderer;
 
     mountRef.current.appendChild(renderer.domElement);
+
+    // OrbitControls setup
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controlsRef.current = controls;
 
     // Lighting setup
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
@@ -112,10 +120,8 @@ const ThreeScene = () => {
       // Animate particles
       particles.rotation.y += 0.002;
 
-      // Subtle camera movement
-      camera.position.x = Math.sin(Date.now() * 0.0005) * 0.5;
-      camera.position.y = Math.cos(Date.now() * 0.0003) * 0.3;
-      camera.lookAt(0, 0, 0);
+      // Update controls
+      controls.update();
 
       renderer.render(scene, camera);
     };
@@ -133,25 +139,9 @@ const ThreeScene = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Mouse interaction
-    let mouseX = 0;
-    let mouseY = 0;
-
-    const handleMouseMove = (event: MouseEvent) => {
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      // Interactive rotation based on mouse
-      cube.rotation.x += mouseY * 0.01;
-      cube.rotation.y += mouseX * 0.01;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
 
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
@@ -169,6 +159,9 @@ const ThreeScene = () => {
       particlesGeometry.dispose();
       particlesMaterial.dispose();
       renderer.dispose();
+
+      // Dispose controls
+      controls.dispose();
     };
   }, []);
 

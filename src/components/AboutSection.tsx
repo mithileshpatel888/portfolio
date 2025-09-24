@@ -28,10 +28,10 @@ const AboutSection = () => {
   }, [hasAnimated]);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
-      className="py-20 bg-background"
+      className="pt-[var(--header-height)] py-20 bg-background"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
