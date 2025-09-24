@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -42,9 +43,13 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* About Image */}
             <div className={`rounded-lg overflow-hidden shadow-xl ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <div className="aspect-square bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                <span className="text-7xl">🧑‍💻</span>
-              </div>
+              <Image
+                src="/img/WhatsApp Image 2025-09-25 at 01.47.37.jpeg"
+                alt="About Me"
+                width={500}
+                height={500}
+                className="object-fill w-500 h-96"
+              />
             </div>
             
             {/* About Text */}
@@ -60,6 +65,15 @@ const AboutSection = () => {
               <p className="text-lg">
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities to maintain a healthy work-life balance.
               </p>
+              <div className="mt-6">
+                <a
+                  href="/img/Mithilesh patel resume.pdf"
+                  download
+                  className="inline-block px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors"
+                >
+                  Download Resume
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -22,42 +22,22 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       id: 'project1',
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with product catalog, shopping cart, user authentication, and payment integration.',
+      title: 'ANI LIVING SPACES',
+      description: 'An end-to-end booking system for service apartments with features for property listings, reservations, and user account management.',
       image: '/placeholder.jpg',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
+      tags: ['Next.js', 'Tailwind CSS', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'Docker', 'CI/CD', 'AWS'],
+      liveUrl: 'https://anilivingspaces.com',
+      githubUrl: 'https://github.com/mithileshpatel888',
       category: 'fullstack'
     },
     {
       id: 'project2',
-      title: 'Task Management App',
-      description: 'A responsive task management application with drag-and-drop functionality, user authentication, and real-time updates.',
+      title: 'DrishtiAI – Multi-LLM Response Platform',
+      description: 'A unified platform to interact with multiple AI providers (ChatGPT, DeepSeek, Grok AI) from a single interface.',
       image: '/placeholder.jpg',
-      tags: ['React', 'Firebase', 'Tailwind CSS', 'Context API'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      category: 'frontend'
-    },
-    {
-      id: 'project3',
-      title: 'RESTful API Service',
-      description: 'A scalable RESTful API service with authentication, rate limiting, and comprehensive documentation.',
-      image: '/placeholder.jpg',
-      tags: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Swagger'],
-      githubUrl: 'https://github.com',
-      category: 'backend'
-    },
-    {
-      id: 'project4',
-      title: 'Social Media Dashboard',
-      description: 'A responsive dashboard for social media analytics with interactive charts and data visualization.',
-      image: '/placeholder.jpg',
-      tags: ['React', 'Chart.js', 'Material UI', 'REST API'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      category: 'frontend'
+      tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Express', 'JWT', 'Google OAuth', 'Git'],
+      githubUrl: 'https://github.com/mithileshpatel888',
+      category: 'fullstack'
     },
   ];
 

@@ -12,7 +12,7 @@ const FooterSection = () => {
           </div>
           <div className="flex space-x-6">
             <a
-              href="https://github.com"
+              href="https://github.com/mithileshpatel888"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -20,7 +20,7 @@ const FooterSection = () => {
               GitHub
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/mithilesh-patel-03a282184"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -28,7 +28,7 @@ const FooterSection = () => {
               LinkedIn
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:mithleshpatel887766@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Email
