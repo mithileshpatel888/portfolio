@@ -55,15 +55,15 @@ const AboutSection = () => {
             {/* About Text */}
             <div className={`space-y-4 ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-10'}`} style={{ animationDelay: '0.4s' }}>
               <p className="text-lg">
-                I'm a passionate MERN Stack Developer with over 2 years of experience in building modern web applications. My journey in web development started with a curiosity about how websites work, and it has evolved into a career I truly enjoy.
+                I&apos;m a passionate MERN Stack Developer with over 2 years of experience in building modern web applications. My journey in web development started with a curiosity about how websites work, and it has evolved into a career I truly enjoy.
               </p>
               
               <p className="text-lg">
-                I specialize in creating responsive, user-friendly interfaces with React.js and Next.js, while implementing robust backend solutions with Node.js and MongoDB. I'm also experienced with containerization using Docker and deploying applications on AWS.
+                I specialize in creating responsive, user-friendly interfaces with React.js and Next.js, while implementing robust backend solutions with Node.js and MongoDB. I&apos;m also experienced with containerization using Docker and deploying applications on AWS.
               </p>
               
               <p className="text-lg">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities to maintain a healthy work-life balance.
+                When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities to maintain a healthy work-life balance.
               </p>
               <div className="mt-6 text-center md:text-left">
                 <a

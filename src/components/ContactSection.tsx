@@ -123,7 +123,7 @@ const ContactSection = () => {
           {isSubmitted ? (
             <div className="bg-secondary/10 border border-secondary rounded-lg p-6 text-center animate-fade-in">
               <h3 className="text-xl font-semibold mb-2 text-secondary">Thank you for your message!</h3>
-              <p>I'll get back to you as soon as possible.</p>
+              <p>I&apos;ll get back to you as soon as possible.</p>
             </div>
           ) : (
             <form 
