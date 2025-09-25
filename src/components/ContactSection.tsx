@@ -82,6 +82,7 @@ const ContactSection = () => {
 
   // Intersection Observer for animations
   useEffect(() => {
+    const section = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
@@ -91,13 +92,13 @@ const ContactSection = () => {
       { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (section) {
+      observer.observe(section);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (section) {
+        observer.unobserve(section);
       }
     };
   }, [isVisible]);

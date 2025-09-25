@@ -10,15 +10,16 @@ const AnimatedName = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mount = mountRef.current;
+    if (!mount) return;
 
     // Scene setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, mount.clientWidth / mount.clientHeight, 0.1, 1000);
     camera.position.z = 5;
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-    mountRef.current.appendChild(renderer.domElement);
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    mount.appendChild(renderer.domElement);
 
     // Physics world setup
     const world = new CANNON.World();
@@ -110,7 +111,7 @@ const AnimatedName = () => {
         });
       };
 
-      mountRef.current?.addEventListener('mouseenter', onMouseEnter);
+      mount?.addEventListener('mouseenter', onMouseEnter);
     });
 
     const clock = new THREE.Clock();
@@ -139,7 +140,9 @@ const AnimatedName = () => {
     animate();
 
     return () => {
-      mountRef.current?.removeChild(renderer.domElement);
+      if (mount && renderer.domElement) {
+        mount.removeChild(renderer.domElement);
+      }
     };
   }, []);
 

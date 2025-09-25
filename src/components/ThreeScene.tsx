@@ -13,7 +13,8 @@ const ThreeScene = () => {
   const animationIdRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mount = mountRef.current;
+    if (!mount) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -22,7 +23,7 @@ const ThreeScene = () => {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       75,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      mount.clientWidth / mount.clientHeight,
       0.1,
       1000
     );
@@ -31,13 +32,13 @@ const ThreeScene = () => {
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     rendererRef.current = renderer;
 
-    mountRef.current.appendChild(renderer.domElement);
+    mount.appendChild(renderer.domElement);
 
     // OrbitControls setup
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -130,11 +131,11 @@ const ThreeScene = () => {
 
     // Handle resize
     const handleResize = () => {
-      if (!mountRef.current || !camera || !renderer) return;
+      if (!mount || !camera || !renderer) return;
 
-      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.aspect = mount.clientWidth / mount.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      renderer.setSize(mount.clientWidth, mount.clientHeight);
     };
 
     window.addEventListener('resize', handleResize);
@@ -147,8 +148,8 @@ const ThreeScene = () => {
         cancelAnimationFrame(animationIdRef.current);
       }
 
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mount && renderer.domElement) {
+        mount.removeChild(renderer.domElement);
       }
 
       // Dispose of Three.js objects
