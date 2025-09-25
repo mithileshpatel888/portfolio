@@ -123,7 +123,7 @@ const Navbar = () => {
         className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-xs bg-background/95 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="h-full flex flex-col items-center justify-center">
-          <nav className="flex flex-col space-y-8 text-center">
+          <nav className="flex flex-col space-y-8 text-center items-center">
             <Link 
               href="#about" 
               className="text-2xl text-foreground/80 hover:text-primary transition-colors"

@@ -42,13 +42,13 @@ const AboutSection = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* About Image */}
-            <div className={`rounded-lg overflow-hidden shadow-xl ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+            <div className={`w-64 h-64 rounded-full md:rounded-lg overflow-hidden shadow-xl mx-auto md:mx-0 md:w-full ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
               <Image
                 src="/img/WhatsApp Image 2025-09-25 at 01.47.37.jpeg"
                 alt="About Me"
                 width={500}
                 height={500}
-                className="object-fill w-500 h-96"
+                className="object-cover w-full h-full"
               />
             </div>
             
@@ -65,7 +65,7 @@ const AboutSection = () => {
               <p className="text-lg">
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities to maintain a healthy work-life balance.
               </p>
-              <div className="mt-6">
+              <div className="mt-6 text-center md:text-left">
                 <a
                   href="/img/Mithilesh patel resume.pdf"
                   download
