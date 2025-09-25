@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effect
+  // Handle scroll effect and body scroll lock for mobile menu
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -19,8 +19,18 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -102,47 +112,56 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-40"
+          onClick={closeMenu}
+          aria-hidden="true"
+        ></div>
+      )}
       <div 
-        className={`md:hidden absolute top-[var(--header-height)] left-0 w-full bg-background/95 backdrop-blur-md shadow-md transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`md:hidden fixed top-0 right-0 h-full w-3/4 max-w-xs bg-background/95 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out z-50 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <nav className="container mx-auto py-4 flex flex-col space-y-4">
-          <Link 
-            href="#about" 
-            className="text-foreground/80 hover:text-primary transition-colors px-4 py-2"
-            onClick={closeMenu}
-          >
-            About
-          </Link>
-          <Link 
-            href="#skills" 
-            className="text-foreground/80 hover:text-primary transition-colors px-4 py-2"
-            onClick={closeMenu}
-          >
-            Skills
-          </Link>
-          <Link 
-            href="#projects" 
-            className="text-foreground/80 hover:text-primary transition-colors px-4 py-2"
-            onClick={closeMenu}
-          >
-            Projects
-          </Link>
-          <Link 
-            href="#contact" 
-            className="text-foreground/80 hover:text-primary transition-colors px-4 py-2"
-            onClick={closeMenu}
-          >
-            Contact
-          </Link>
-          <a 
-            href="/img/Mithilesh patel resume.pdf" 
-            className="mx-4 px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors text-center"
-            download
-            onClick={closeMenu}
-          >
-            Resume
-          </a>
-        </nav>
+        <div className="h-full flex flex-col items-center justify-center">
+          <nav className="flex flex-col space-y-8 text-center">
+            <Link 
+              href="#about" 
+              className="text-2xl text-foreground/80 hover:text-primary transition-colors"
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link 
+              href="#skills" 
+              className="text-2xl text-foreground/80 hover:text-primary transition-colors"
+              onClick={closeMenu}
+            >
+              Skills
+            </Link>
+            <Link 
+              href="#projects" 
+              className="text-2xl text-foreground/80 hover:text-primary transition-colors"
+              onClick={closeMenu}
+            >
+              Projects
+            </Link>
+            <Link 
+              href="#contact" 
+              className="text-2xl text-foreground/80 hover:text-primary transition-colors"
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+            <a 
+              href="/img/Mithilesh patel resume.pdf" 
+              className="mt-4 inline-block px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors text-lg"
+              download
+              onClick={closeMenu}
+            >
+              Resume
+            </a>
+          </nav>
+        </div>
       </div>
     </header>
   );

@@ -5,6 +5,7 @@ import SkillsSection from '../components/SkillsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import FooterSection from '../components/FooterSection';
+import AnimatedName from '@/components/AnimatedName';
 
 export default function Home() {
   return (
