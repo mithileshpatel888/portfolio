@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useTheme } from './ThemeProvider';
 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   // Handle scroll effect and body scroll lock for mobile menu
   useEffect(() => {
@@ -87,6 +89,44 @@ const Navbar = () => {
           >
             Resume
           </a>
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'light' ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            )}
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -124,42 +164,80 @@ const Navbar = () => {
       >
         <div className="h-full flex flex-col items-center justify-center">
           <nav className="flex flex-col space-y-8 text-center items-center">
-            <Link 
-              href="#about" 
+            <Link
+              href="#about"
               className="text-2xl text-foreground/80 hover:text-primary transition-colors"
               onClick={closeMenu}
             >
               About
             </Link>
-            <Link 
-              href="#skills" 
+            <Link
+              href="#skills"
               className="text-2xl text-foreground/80 hover:text-primary transition-colors"
               onClick={closeMenu}
             >
               Skills
             </Link>
-            <Link 
-              href="#projects" 
+            <Link
+              href="#projects"
               className="text-2xl text-foreground/80 hover:text-primary transition-colors"
               onClick={closeMenu}
             >
               Projects
             </Link>
-            <Link 
-              href="#contact" 
+            <Link
+              href="#contact"
               className="text-2xl text-foreground/80 hover:text-primary transition-colors"
               onClick={closeMenu}
             >
               Contact
             </Link>
-            <a 
-              href="/img/Mithilesh patel resume.pdf" 
+            <a
+              href="/img/Mithilesh patel resume.pdf"
               className="mt-4 inline-block px-6 py-3 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors text-lg"
               download
               onClick={closeMenu}
             >
               Resume
             </a>
+            {/* Theme Toggle Button Mobile */}
+            <button
+              onClick={() => { toggleTheme(); closeMenu(); }}
+              className="mt-4 p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+              )}
+            </button>
           </nav>
         </div>
       </div>
