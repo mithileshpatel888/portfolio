@@ -70,13 +70,13 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <Link 
-            href="/resume.pdf" 
+          <a 
+            href="/img/Mithilesh patel resume.pdf" 
             className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
-            target="_blank"
+            download
           >
             Resume
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -134,14 +134,14 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <Link 
-            href="/resume.pdf" 
+          <a 
+            href="/img/Mithilesh patel resume.pdf" 
             className="mx-4 px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors text-center"
-            target="_blank"
+            download
             onClick={closeMenu}
           >
             Resume
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

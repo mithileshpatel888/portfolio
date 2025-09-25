@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const FooterSection = () => {
   return (
@@ -15,22 +16,25 @@ const FooterSection = () => {
               href="https://github.com/mithileshpatel888"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
             >
+              <FaGithub />
               GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/mithilesh-patel-03a282184"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
             >
+              <FaLinkedin />
               LinkedIn
             </a>
             <a
               href="mailto:mithleshpatel887766@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
             >
+              <FaEnvelope />
               Email
             </a>
           </div>
